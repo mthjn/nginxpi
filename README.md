@@ -57,6 +57,70 @@ and fail2ban `sudo apt-get install fail2ban`
 
 `sudo apt-get install nginx php5-fpm php5-curl php5-gd php5-cli php5-mcrypt php5-mysql php-apc`
 
+conf: 
+
+* `sudo vim /etc/nginx/nginx.conf` worker_processes not 4 but 2
+* in http block un-comment the 'server_tokens off' line
+* in http block against ddos:
+
+```
+client_header_timeout 10;
+client_body_timeout   10;
+keepalive_timeout     10 10;
+send_timeout          10;
+```
+
+gzip block:
+
+```
+gzip on;
+gzip_disable "msie6";
+
+gzip_min_length   1100;
+gzip_vary         on;
+gzip_proxied      any;
+gzip_buffers      16 8k;
+gzip_comp_level   6;
+gzip_http_version 1.1;
+gzip_types        text/plain text/css applciation/json application/x-javascript text/xml application/xml application/rss+xml text/javascript images/svg+xml application/x-font-ttf font/opentype application/vnd.ms-fontobject;
+```
+
+### opt nginx for php
+
+`sudo vim /etc/nginx/fastcgi_params`
+
+http://wiki.nginx.org/PHPFcgiExample
+
+```
+fastcgi_param   QUERY_STRING            $query_string;
+fastcgi_param   REQUEST_METHOD          $request_method;
+fastcgi_param   CONTENT_TYPE            $content_type;
+fastcgi_param   CONTENT_LENGTH          $content_length;
+
+fastcgi_param   SCRIPT_FILENAME         $document_root$fastcgi_script_name;
+fastcgi_param   SCRIPT_NAME             $fastcgi_script_name;
+fastcgi_param   PATH_INFO               $fastcgi_path_info;
+fastcgi_param   REQUEST_URI             $request_uri;
+fastcgi_param   DOCUMENT_URI            $document_uri;
+fastcgi_param   DOCUMENT_ROOT           $document_root;
+fastcgi_param   SERVER_PROTOCOL         $server_protocol;
+
+fastcgi_param   GATEWAY_INTERFACE       CGI/1.1;
+fastcgi_param   SERVER_SOFTWARE         nginx/$nginx_version;
+
+fastcgi_param   REMOTE_ADDR             $remote_addr;
+fastcgi_param   REMOTE_PORT             $remote_port;
+fastcgi_param   SERVER_ADDR             $server_addr;
+fastcgi_param   SERVER_PORT             $server_port;
+fastcgi_param   SERVER_NAME             $server_name;
+
+fastcgi_param   HTTPS                   $https;
+
+# PHP only, required if PHP was built with --enable-force-cgi-redirect
+fastcgi_param   REDIRECT_STATUS         200;
+```
+
+
 ### mysql
 
 `sudo apt-get install mysql-server` ... set passwd
