@@ -3,6 +3,11 @@
 * https://mattwilcox.net/web-development/setting-up-a-secure-home-web-server-with-raspberry-pi/
 * https://mattwilcox.net/web-development/setting-up-a-secure-website-with-https-and-spdy-support-under-nginx-on-a-raspberry-pi
 
+#### after init setup
+
+add user/s to all present `groups` to disable `pi` login
+`sudo useradd -m -G adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,netdev,input USERNAME`
+
 ## general nginx hardening
 
 * http://www.acunetix.com/blog/articles/nginx-server-security-hardening-configuration-1/
