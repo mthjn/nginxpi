@@ -5,8 +5,18 @@
 
 #### after init setup
 
-add user/s to all present `groups` to disable `pi` login
+* updates
+`sudo apt-get update && sudo apt-get upgrade -y`
+* add user/s to all present `groups` to disable `pi` login
 `sudo useradd -m -G adm,dialout,cdrom,sudo,audio,video,plugdev,games,users,netdev,input USERNAME`
+`sudo passwd USERNAME`
+* usb? find and format for linux
+`sudo fdisk -l`
+`sudo mkfs.ext4 /dev/sda1 #not /dev/mmcblk0`
+`sudo mkdir /mountpoint`
+`sudo mount /dev/sda1 /mountpoint`
+
+
 
 ## general nginx hardening
 
