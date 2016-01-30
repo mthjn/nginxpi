@@ -3,7 +3,7 @@
 * https://mattwilcox.net/web-development/setting-up-a-secure-home-web-server-with-raspberry-pi/
 * https://mattwilcox.net/web-development/setting-up-a-secure-website-with-https-and-spdy-support-under-nginx-on-a-raspberry-pi
 
-#### after init setup
+### after init setup
 
 * updates
 
@@ -33,8 +33,25 @@ automount: `sudo vim /etc/fstab`
 
 => append `/dev/sda1 [tab] /websites [tab] ext4 [tab] defaults [tab] 0 [tab] 2`
 
+### ssh
 
+```
+ssh-keygen -b 4096
+...
+ssh-copy-id example_user@000.111.333.222
+```
 
+**/etc/ssh/sshd_config** PermitRootLogin no, PasswordAuthentication no
+
+`sudo service ssh restart` (probably as service here?)
+
+#### firewall
+
+apf
+
+* http://snipe.net/2011/10/apf-bfd-firewall-brute-force/
+
+and fail2ban `sudo apt-get install fail2ban`
 
 ## general nginx hardening
 
