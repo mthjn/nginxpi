@@ -45,13 +45,35 @@ ssh-copy-id example_user@000.111.333.222
 
 `sudo service ssh restart` (probably as service here?)
 
-#### firewall
+### firewall
 
 apf
 
 * http://snipe.net/2011/10/apf-bfd-firewall-brute-force/
 
 and fail2ban `sudo apt-get install fail2ban`
+
+### nginx + faster php packs
+
+`sudo apt-get install nginx php5-fpm php5-curl php5-gd php5-cli php5-mcrypt php5-mysql php-apc`
+
+### mysql
+
+`sudo apt-get install mysql-server` ... set passwd
+
+`sudo mysql_install_db` ...setup directory layout
+
+`sudo mysql_secure_installation` ...all y
+
+conf: `sudo vim /etc/mysql/my.cnf`
+
+to check: 
+
+* bind-address set to loopback device 127.0.0.1 (no external connections)
+* add to same section (mysqld): `local-infile=0`
+* same section - logging: `log=/var/log/mysql-logfile` while /var/log/mysql* not world-readable
+
+
 
 ## general nginx hardening
 
