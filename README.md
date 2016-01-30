@@ -19,11 +19,20 @@
 
 `sudo fdisk -l`
 
-`sudo mkfs.ext4 /dev/sda1 #not /dev/mmcblk0`
+`sudo mkfs.ext4 /dev/sda1` - not /dev/mmcblk0
 
 `sudo mkdir /mountpoint`
 
 `sudo mount /dev/sda1 /mountpoint`
+
+group: `sudo chgrp -R users`
+
+`sudo chmod -R g+w /mountpoint`
+
+automount: `sudo vim /etc/fstab`
+
+=> append `/dev/sda1 [tab] /websites [tab] ext4 [tab] defaults [tab] 0 [tab] 2`
+
 
 
 
