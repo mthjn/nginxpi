@@ -55,6 +55,8 @@ and fail2ban `sudo apt-get install fail2ban`
 
 ### nginx + faster php packs
 
+this installs old nginx version. for security better build from src - https://mattwilcox.net/web-development/setting-up-a-secure-website-with-https-and-spdy-support-under-nginx-on-a-raspberry-pi
+
 `sudo apt-get install nginx php5-fpm php5-curl php5-gd php5-cli php5-mcrypt php5-mysql php-apc`
 
 conf: 
