@@ -21,13 +21,13 @@
 
 `sudo mkfs.ext4 /dev/sda1` - not /dev/mmcblk0
 
-`sudo mkdir /mountpoint`
+mountpoint: `sudo mkdir /websites`
 
-`sudo mount /dev/sda1 /mountpoint`
+`sudo mount /dev/sda1 /websites`
 
 group: `sudo chgrp -R users`
 
-`sudo chmod -R g+w /mountpoint`
+`sudo chmod -R g+w /websites`
 
 automount: `sudo vim /etc/fstab`
 
@@ -119,6 +119,10 @@ fastcgi_param   HTTPS                   $https;
 # PHP only, required if PHP was built with --enable-force-cgi-redirect
 fastcgi_param   REDIRECT_STATUS         200;
 ```
+
+and in php conf
+
+`sudo vim /etc/php5/fpm/pool.d/www.conf` uncomment listen.owner and listen.group lines
 
 
 ### mysql
