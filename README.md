@@ -59,6 +59,23 @@ this installs old nginx version. for security better build from src - https://ma
 
 `sudo apt-get install nginx php5-fpm php5-curl php5-gd php5-cli php5-mcrypt php5-mysql php-apc`
 
+* uninstall nginx again `sudo apt-get remove nginx`
+* sh to do the deed
+
+```
+cd ~
+wget https://gist.githubusercontent.com/MattWilcox/402e2e8aa2e1c132ee24/raw/b88e2a85b31bcca57339c8ed8858f42557c3cf53/build_nginx.sh
+```
+
+**You will need to check the name of the most recent source files for nginx, PCRE, and OpenSSL yourself; and change the values under '# names of latest versions of each package' if they are now different! Do not put any spaces around the equals sign. They will break the script. You should only need to change the numbers.**
+
+* https://www.openssl.org/source/
+* http://www.pcre.org/
+* http://nginx.org/en/download.html
+
+Then make the sh executable and run w root privs
+
+
 conf: 
 
 * `sudo vim /etc/nginx/nginx.conf` worker_processes not 4 but 2
