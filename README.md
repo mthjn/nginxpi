@@ -1,7 +1,25 @@
+## general nginx hardening
+
+* [acunetix nginx hardening 1](http://www.acunetix.com/blog/articles/nginx-server-security-hardening-configuration-1/)
+* [tecmint performance tips](http://www.tecmint.com/nginx-web-server-security-hardening-and-performance-tips/)
+
+## irc server
+
+* [run inspircd on ubuntu](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-irc-server-on-ubuntu-14-04-with-inspircd-2-0-and-shalture)
+
+## hidden
+
+* [hidden services nginx](http://www.makeuseof.com/tag/create-hidden-service-tor-site-set-anonymous-website-server/)
+
+
+======================
+
+
 ## nginx pi
 
-* https://mattwilcox.net/web-development/setting-up-a-secure-home-web-server-with-raspberry-pi/
-* https://mattwilcox.net/web-development/setting-up-a-secure-website-with-https-and-spdy-support-under-nginx-on-a-raspberry-pi
+* [matt wilcox, basic setup nginx pi](https://mattwilcox.net/web-development/setting-up-a-secure-home-web-server-with-raspberry-pi/)
+* [matt wilcox, follow up](https://mattwilcox.net/web-development/setting-up-a-secure-website-with-https-and-spdy-support-under-nginx-on-a-raspberry-pi)
+* [jack's perfect setup](https://rackerjack.uk/jacks-perfect-server-setup/) -some more php-fpm configs
 
 ### after init setup
 
@@ -50,6 +68,7 @@ ssh-copy-id example_user@000.111.333.222
 apf
 
 * http://snipe.net/2011/10/apf-bfd-firewall-brute-force/
+* https://rackerjack.uk/jacks-perfect-server-setup/
 
 and fail2ban `sudo apt-get install fail2ban`
 
@@ -76,7 +95,7 @@ wget https://gist.githubusercontent.com/MattWilcox/402e2e8aa2e1c132ee24/raw/b88e
 Then make the sh executable and run w root privs
 
 
-conf: 
+* conf: 
 
 * `sudo vim /etc/nginx/nginx.conf` worker_processes not 4 but 2
 * in http block un-comment the 'server_tokens off' line
@@ -89,7 +108,7 @@ keepalive_timeout     10 10;
 send_timeout          10;
 ```
 
-gzip block:
+* gzip block:
 
 ```
 gzip on;
@@ -108,7 +127,9 @@ gzip_types        text/plain text/css applciation/json application/x-javascript 
 
 `sudo vim /etc/nginx/fastcgi_params`
 
-http://wiki.nginx.org/PHPFcgiExample
+* http://wiki.nginx.org/PHPFcgiExample
+* also see https://rackerjack.uk/jacks-perfect-server-setup/
+
 
 ```
 fastcgi_param   QUERY_STRING            $query_string;
@@ -160,17 +181,3 @@ to check:
 * add to same section (mysqld): `local-infile=0`
 * same section - logging: `log=/var/log/mysql-logfile` while /var/log/mysql* not world-readable
 
-
-
-## general nginx hardening
-
-* http://www.acunetix.com/blog/articles/nginx-server-security-hardening-configuration-1/
-* http://www.tecmint.com/nginx-web-server-security-hardening-and-performance-tips/
-
-## irc server
-
-* https://www.digitalocean.com/community/tutorials/how-to-set-up-an-irc-server-on-ubuntu-14-04-with-inspircd-2-0-and-shalture
-
-## hidden
-
-* http://www.makeuseof.com/tag/create-hidden-service-tor-site-set-anonymous-website-server/
